@@ -23,20 +23,20 @@ pygame.display.set_caption("Cross the Road")
 clock = pygame.time.Clock()
 
 # Laden der Bilder
-frog_img = pygame.image.load("frog.png").convert_alpha()
-car_img = pygame.image.load("car.png").convert_alpha()
-street_img = pygame.image.load("street.jpg").convert()
+frog_png = pygame.image.load("frog.png").convert_alpha()
+car_png = pygame.image.load("car.png").convert_alpha()
+street_jpg = pygame.image.load("street.jpg").convert()
 
 # Anpassung der Bildgröße
-frog_img = pygame.transform.scale(frog_img, (PLAYER_SIZE, PLAYER_SIZE))
-car_img = pygame.transform.scale(car_img, (OBSTACLE_WIDTH, OBSTACLE_HEIGHT))
-street_img = pygame.transform.scale(street_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
+frog_png = pygame.transform.scale(frog_png, (PLAYER_SIZE, PLAYER_SIZE))
+car_png = pygame.transform.scale(car_png, (OBSTACLE_WIDTH, OBSTACLE_HEIGHT))
+street_jpg = pygame.transform.scale(street_jpg, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Spielerklasse
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = frog_img
+        self.image = frog_png
         self.rect = self.image.get_rect()
         self.rect.centerx = SCREEN_WIDTH // 2
         self.rect.bottom = SCREEN_HEIGHT - 20
@@ -72,7 +72,7 @@ class Player(pygame.sprite.Sprite):
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, speed):
         super().__init__()
-        self.image = car_img
+        self.image = car_png
         self.rect = self.image.get_rect()
         self.speed = speed
         self.reset()
@@ -140,7 +140,7 @@ def main():
             obstacles.update()
 
             # Hintergrund zeichnen
-            screen.blit(street_img, (0, 0))
+            screen.blit(street_jpg, (0, 0))
 
             # Alle Sprites zeichnen
             all_sprites.draw(screen)
